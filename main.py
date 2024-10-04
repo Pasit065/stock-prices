@@ -1,7 +1,4 @@
-import twilio.base
-import twilio.base.exceptions
 from tesla import Tesla
-import twilio.rest
 from percent_diff_stock_calculator import PercentDiffStockCalculator
 from sms_sendor import SmsSendor
 from email_sendor import EmailSendor
@@ -9,7 +6,8 @@ import smtplib as smtp
 import os
 import requests
 
-STOCK = "TSLA"              # symbol value.
+ # symbol value.
+STOCK = "TSLA"             
 COMPANY_NAME = "Tesla Inc"
 
 def show_send_sms_news(sms_sendor):
@@ -85,7 +83,7 @@ if tesla.percentage_diff_price >= 5 or tesla.percentage_diff_price <= -5:
         email_percent_text = f"Stock price decrease by {tesla.percentage_diff_price}%"
 
     # Filtering 3 news to given list.
-    tesla.getting_filtered_news_list(every_tesla_news = every_tesla_news)
+    tesla.getting_filtered_news_list(every_tesla_news = every_tesla_news, the_amount_of_news = 3)
 
     # Creating sms messages from 3 sms articles.
     sms_sendor.creating_sms_message_list(tesla = tesla, stock = STOCK, percent_diff_text = percent_diff_text)
@@ -94,8 +92,7 @@ if tesla.percentage_diff_price >= 5 or tesla.percentage_diff_price <= -5:
     show_send_sms_news(sms_sendor = sms_sendor)
 
     try:
-        # sms_sendor.sending_sms(auth_token = auth_token, account_sid = account_sid)
-        print(sms_sendor.send_sms_message_list)
+        sms_sendor.sending_sms(auth_token = auth_token, account_sid = account_sid)
     except: 
         # If error has occured while sending sms 'email_sendor' will send notification to user email.
         error_sms_body_message = """
@@ -112,7 +109,7 @@ Unable to create record: Authenticate. Please go to https://www.twilio.com/docs/
     
     # If sms have been send successfully, 'email_sendor' will notify users.
     successfully_sms_body_message = f"""
-Differrence percent of stock price between lastest days is {email_percent_text}
+Differrence percent of stock price between lastest days is {email_percent_text} and SMS {len(sms_sendor.send_sms_message_list)} have 
 """
 
     email_msg = email_sendor.get_email_message(header = "Sms message has been send successfully.", message = successfully_sms_body_message)

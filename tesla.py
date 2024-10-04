@@ -38,7 +38,7 @@ class Tesla():
 
         return response.json()
     
-    def getting_filtered_news_list(self, every_tesla_news, the_amount_of_news = 3):
+    def getting_filtered_news_list(self, every_tesla_news, the_amount_of_news):
         
         total_news = 0
         self.filtered_news_list = []

@@ -1,5 +1,4 @@
 from twilio.rest import Client
-import os
 
 class SmsSendor():
     # This class is responsible with execute SMS notify and managing SMS message. 
