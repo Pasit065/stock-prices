@@ -109,7 +109,8 @@ Unable to create record: Authenticate. Please go to https://www.twilio.com/docs/
     
     # If sms have been send successfully, 'email_sendor' will notify users.
     successfully_sms_body_message = f"""
-Differrence percent of stock price between lastest days is {email_percent_text} and SMS {len(sms_sendor.send_sms_message_list)} have 
+Differrence percent of stock price between lastest days is {email_percent_text} and  {len(sms_sendor.send_sms_message_list)} SMS have been
+sent.
 """
 
     email_msg = email_sendor.get_email_message(header = "Sms message has been send successfully.", message = successfully_sms_body_message)

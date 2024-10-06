@@ -81,6 +81,16 @@ Before executing the projects, please follow **Initial Setup** instruction.
     ```Python
     tesla.getting_filtered_news_list(every_tesla_news = every_tesla_news, the_amount_of_news = 3)
     ```
+
+4. In `main.py`, user can adjust `to_email` parameter from `email_sendor` object declaration as desired for define recieved email.
+    ```Python
+    email_sendor = EmailSendor(from_email = my_email, to_email = "User_phone_number")
+    ```
+
+5. In `recieved_sms_phone_num`, user can adjust `my_phone_number` in environment variables setting. please bear in mind, `my_phone_number` must be verified twilio number.
+    ```Python
+    recieved_sms_phone_num = os.environ.get("my_phone_number")
+    ```
 ### Executing Project
 Once all necessary setup have been provided, project can be executed by following command.
 ```
