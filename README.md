@@ -14,7 +14,7 @@ The project integrate and utilize 2 REST API.
 2. **News API** used for retrieve news topic and article data of specified company. See more details here *[News API](https://newsapi.org )*
 
 ## Diagram
-### Flowchart
+![](./public/flowchart.png)
 
 ## Usage 
 Before executing the projects, please follow **Initial Setup** instruction.
